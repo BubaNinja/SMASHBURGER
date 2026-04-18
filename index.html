@@ -722,8 +722,8 @@
         /* Floating cart badge */
         .cart-float {
             position: fixed;
-            bottom: 2rem;
-            right: 2rem;
+            bottom: 1.5rem;
+            right: 1.5rem;
             z-index: 999;
             background: var(--red);
             color: var(--white);
@@ -1220,7 +1220,7 @@
         .float-msg:hover { transform:scale(1.1);animation:none; }
         @keyframes msgPulse { 0%,100%{box-shadow:0 4px 20px rgba(88,86,214,0.4)} 50%{box-shadow:0 4px 30px rgba(88,86,214,0.6)} }
         .scroll-top {
-            position:fixed;bottom:1.5rem;right:5rem;width:40px;height:40px;
+            position:fixed;bottom:1.5rem;right:6rem;width:40px;height:40px;
             background:var(--bg-card);border:2px solid var(--yellow);color:var(--yellow);
             display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:999;
             opacity:0;visibility:hidden;transition:all 0.3s;text-decoration:none;
@@ -1230,7 +1230,7 @@
         .scroll-top:hover { background:var(--yellow);color:var(--bg); }
         @media(max-width:768px) {
             .float-msg { width:44px;height:44px;border-radius:12px;bottom:1rem;left:1rem; }
-            .scroll-top { bottom:1rem;right:4.5rem; }
+            .scroll-top { bottom:1rem;right:5.5rem; }
         }
     </style>
     <script type="application/ld+json">
@@ -1298,9 +1298,9 @@
                 <span>Наше меню</span>
             </a>
         <div class="hero-trust" style="display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap;opacity:0;animation:slamIn 0.5s ease 1.3s forwards">
-            <span style="font-size:0.85rem;color:var(--text-dim)"><strong style="color:var(--white)">Мраморная</strong> говядина</span>
-            <span style="font-size:0.85rem;color:var(--text-dim)"><strong style="color:var(--white)">Своя</strong> пекарня</span>
-            <span style="font-size:0.85rem;color:var(--text-dim)">Доставка <strong style="color:var(--yellow)">30 мин</strong></span>
+            <span style="font-size:1rem;color:var(--text-light)"><strong style="color:var(--white)">Мраморная</strong> говядина</span>
+            <span style="font-size:1rem;color:var(--text-light)"><strong style="color:var(--white)">Своя</strong> пекарня</span>
+            <span style="font-size:1rem;color:var(--text-light)">Доставка <strong style="color:var(--yellow)">30 мин</strong></span>
         </div>
         </div>
     </div>
