@@ -300,7 +300,9 @@
             animation: slamIn 0.5s ease 0.7s forwards;
         }
         .hero-subtitle {
+            font-family: var(--sans);
             font-size: 1.05rem;
+            font-weight: 400;
             color: var(--text-light);
             max-width: 450px;
             line-height: 1.8;
@@ -482,9 +484,9 @@
             box-shadow: 3px 3px 0 var(--bg);
         }
         .about-text p {
-            font-size: 0.95rem;
+            font-size: 1rem;
             line-height: 1.9;
-            color: var(--text);
+            color: var(--text-light);
             margin-bottom: 1.2rem;
         }
         .about-features {
@@ -501,7 +503,7 @@
         }
         .feature-title {
             font-family: var(--sans);
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--yellow);
             text-transform: uppercase;
@@ -509,8 +511,8 @@
             margin-bottom: 0.2rem;
         }
         .feature-desc {
-            font-size: 0.78rem;
-            color: var(--text-dim);
+            font-size: 0.85rem;
+            color: var(--text);
         }
 
         /* ===== DIAGONAL DIVIDER ===== */
@@ -594,7 +596,7 @@
         }
         .menu-item {
             background: var(--bg-card);
-            padding: 2rem;
+            padding: 2rem 2.2rem;
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
@@ -609,7 +611,7 @@
         }
         .menu-item-name {
             font-family: var(--sans);
-            font-size: 1.1rem;
+            font-size: 1.25rem;
             font-weight: 600;
             color: var(--white);
             text-transform: uppercase;
@@ -617,18 +619,18 @@
         }
         .menu-item-tag {
             font-family: var(--marker);
-            font-size: 0.8rem;
+            font-size: 0.9rem;
             color: var(--red);
             margin-bottom: 0.4rem;
         }
         .menu-item-desc {
-            font-size: 0.82rem;
-            color: var(--text-dim);
-            line-height: 1.5;
+            font-size: 0.9rem;
+            color: var(--text);
+            line-height: 1.6;
         }
         .menu-item-price {
             font-family: var(--display);
-            font-size: 1.2rem;
+            font-size: 1.35rem;
             color: var(--yellow);
             white-space: nowrap;
             flex-shrink: 0;
@@ -695,7 +697,7 @@
             color: var(--bg);
             border: none;
             font-family: var(--sans);
-            font-size: 0.65rem;
+            font-size: 0.75rem;
             font-weight: 700;
             letter-spacing: 0.1em;
             text-transform: uppercase;
@@ -1148,7 +1150,7 @@
 
         /* ===== MAX + SCROLL TOP ===== */
         .float-msg {
-            position:fixed;bottom:1.5rem;right:1.5rem;width:48px;height:48px;
+            position:fixed;bottom:1.5rem;left:1.5rem;width:48px;height:48px;
             border-radius:14px;z-index:999;overflow:hidden;
             box-shadow:0 4px 20px rgba(88,86,214,0.4);
             animation:msgPulse 2.5s ease-in-out infinite;transition:transform 0.3s;
@@ -1166,12 +1168,12 @@
         .scroll-top.visible { opacity:1;visibility:visible; }
         .scroll-top:hover { background:var(--yellow);color:var(--bg); }
         @media(max-width:768px) {
-            .float-msg { width:44px;height:44px;border-radius:12px;bottom:1rem;right:1rem; }
+            .float-msg { width:44px;height:44px;border-radius:12px;bottom:1rem;left:1rem; }
             .scroll-top { bottom:1rem;right:4.5rem; }
         }
     </style>
     <script type="application/ld+json">
-    {"@context":"https://schema.org","@type":"Restaurant","name":"SMASHBURGER","image":"images/hero.jpg","servesCuisine":"Burgers","priceRange":"$","address":{"@type":"PostalAddress","streetAddress":"ул. Пример 42","addressLocality":"Москва","addressCountry":"RU"},"telephone":"+7 (495) 666-13-37"}
+    {"@context":"https://schema.org","@type":"Restaurant","name":"SMASHBURGER","image":"images/hero.jpg","servesCuisine":"Burgers","priceRange":"$","address":{"@type":"PostalAddress","streetAddress":"ул. Большая Садовая 10","addressLocality":"Москва","addressCountry":"RU"},"telephone":"+7 (495) 666-13-37"}
     </script>
 </head>
 <body>
@@ -1468,7 +1470,7 @@
                 <p class="order-info-sub">Пишите, звоните, приходите!</p>
                 <div class="info-item">
                     <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>
-                    <p><strong>Адрес</strong>ул. Пример 42, Москва<br>Метро Арбатская, 2 мин пешком</p>
+                    <p><strong>Адрес</strong>ул. Большая Садовая 10, Москва<br>м. Маяковская, 3 мин пешком</p>
                 </div>
                 <div class="info-item">
                     <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
