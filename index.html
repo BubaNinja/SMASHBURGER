@@ -1117,6 +1117,67 @@
             .hero-bg-text { display: none; }
         }
 
+
+        /* ===== FAQ ===== */
+        .faq-section {
+            background: var(--bg);
+        }
+        .faq-grid {
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+        .faq-item {
+            border-bottom: 1px solid var(--border);
+            overflow: hidden;
+        }
+        .faq-q {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.4rem 0;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .faq-q:hover { color: var(--yellow); }
+        .faq-q h4 {
+            font-family: var(--sans);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--white);
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+        .faq-q:hover h4 { color: var(--yellow); }
+        .faq-arrow {
+            width: 28px; height: 28px;
+            background: var(--yellow-dim);
+            display: flex; align-items: center; justify-content: center;
+            transform: skewX(-6deg);
+            transition: all 0.3s;
+            flex-shrink: 0;
+            color: var(--yellow);
+            font-size: 0.8rem;
+        }
+        .faq-item.open .faq-arrow {
+            background: var(--yellow);
+            color: var(--bg);
+            transform: skewX(-6deg) rotate(180deg);
+        }
+        .faq-a {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+        .faq-item.open .faq-a { max-height: 200px; }
+        .faq-a p {
+            padding: 0 0 1.4rem;
+            font-size: 0.9rem;
+            color: var(--text-light);
+            line-height: 1.8;
+        }
+
         /* ===== MODAL ===== */
         .modal-overlay {
             position:fixed;inset:0;background:rgba(26,26,26,0.8);backdrop-filter:blur(8px);
@@ -1174,7 +1235,25 @@
     </style>
     <script type="application/ld+json">
     {"@context":"https://schema.org","@type":"Restaurant","name":"SMASHBURGER","image":"images/hero.jpg","servesCuisine":"Burgers","priceRange":"$","address":{"@type":"PostalAddress","streetAddress":"ул. Большая Садовая 10","addressLocality":"Москва","addressCountry":"RU"},"telephone":"+7 (495) 666-13-37"}
-    </script>
+    
+    // Toggle address field
+    function toggleAddress(val) {
+        var ag = document.getElementById('addressGroup');
+        if (val === 'pickup') {
+            ag.style.display = 'none';
+            ag.querySelector('input').removeAttribute('required');
+        } else {
+            ag.style.display = 'flex';
+        }
+    }
+
+    // FAQ accordion
+    function toggleFaq(el) {
+        var wasOpen = el.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(item) { item.classList.remove('open'); });
+        if (!wasOpen) el.classList.add('open');
+    }
+</script>
 </head>
 <body>
 
@@ -1428,6 +1507,38 @@
     </div>
 </section>
 
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+    <div class="reveal">
+        <p class="section-label">Вопросы</p>
+        <h2 class="section-title">ЧАСТЫЕ <span class="yellow">ВОПРОСЫ</span></h2>
+        <div class="section-bar"></div>
+    </div>
+    <div class="faq-grid reveal">
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q"><h4>Откуда мясо?</h4><div class="faq-arrow">&#9660;</div></div>
+            <div class="faq-a"><p>Мраморная говядина из фермерских хозяйств Брянской области. Каждая партия проходит ветконтроль. Мы знаем каждого поставщика лично.</p></div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q"><h4>Какая зона доставки?</h4><div class="faq-arrow">&#9660;</div></div>
+            <div class="faq-a"><p>Доставляем в радиусе 5 км от ресторана. Среднее время доставки -- 30 минут. За пределами зоны -- самовывоз.</p></div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q"><h4>Есть минимальный заказ?</h4><div class="faq-arrow">&#9660;</div></div>
+            <div class="faq-a"><p>Минимальный заказ на доставку -- 700 рублей. Для самовывоза ограничений нет.</p></div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q"><h4>Можно заказать на компанию?</h4><div class="faq-arrow">&#9660;</div></div>
+            <div class="faq-a"><p>Да! При заказе от 5 000 рублей -- скидка 10%. Для корпоративных заказов звоните заранее, соберём всё к нужному времени.</p></div>
+        </div>
+        <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-q"><h4>Есть веган-опции?</h4><div class="faq-arrow">&#9660;</div></div>
+            <div class="faq-a"><p>Пока нет, но работаем над plant-based бургером. Следите за обновлениями в Telegram!</p></div>
+        </div>
+    </div>
+</section>
+
 <!-- Order -->
 <section class="order-section" id="order">
     <div class="order-grid reveal">
@@ -1453,9 +1564,27 @@
                         <input type="tel" name="phone" placeholder="+7 (___) ___-__-__" required>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Способ получения</label>
+                        <select name="delivery" onchange="toggleAddress(this.value)">
+                            <option value="delivery">Доставка</option>
+                            <option value="pickup">Самовывоз</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Когда</label>
+                        <select name="when">
+                            <option>Как можно скорее</option>
+                            <option>Через 30 минут</option>
+                            <option>Через 1 час</option>
+                            <option>Через 1.5 часа</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group" id="addressGroup">
                     <label>Адрес доставки</label>
-                    <input type="text" name="address" placeholder="Улица, дом, квартира" required>
+                    <input type="text" name="address" placeholder="Улица, дом, квартира">
                 </div>
                 <div class="form-group">
                     <label>Комментарий</label>
@@ -1775,9 +1904,29 @@
     //     'Адрес: ' + (fd.get('address')||'-') + '%0A' +
     //     'Заказ: ' + items + '%0A' +
     //     'Итого: ' + total + ' руб%0A' +
+    //     'Способ: ' + (fd.get('delivery')||'-') + '%0A' +
+    //     'Когда: ' + (fd.get('when')||'-') + '%0A' +
     //     'Комментарий: ' + (fd.get('comment')||'-');
     // fetch('https://api.telegram.org/bot' + BOT_TOKEN + '/sendMessage?chat_id=' + CHAT_ID + '&text=' + text);
     === END === */
+
+    // Toggle address field
+    function toggleAddress(val) {
+        var ag = document.getElementById('addressGroup');
+        if (val === 'pickup') {
+            ag.style.display = 'none';
+            ag.querySelector('input').removeAttribute('required');
+        } else {
+            ag.style.display = 'flex';
+        }
+    }
+
+    // FAQ accordion
+    function toggleFaq(el) {
+        var wasOpen = el.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(function(item) { item.classList.remove('open'); });
+        if (!wasOpen) el.classList.add('open');
+    }
 </script>
 </body>
 </html>
